@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "7/6IOXVm1VA+lsmDw+ekNHWHpEoIqU6ReOjAlPaqZ3jIX94pfBeDqHqEBeyk+P6bAHs2W1wq2V26AvOWGs9jbQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Dmitriy Makarov\\source\\repos\\TestTriplet\\TestTriplet\\TestTriplet.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Dmitriy Makarov\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
+  ],
+  "logs": []
+}

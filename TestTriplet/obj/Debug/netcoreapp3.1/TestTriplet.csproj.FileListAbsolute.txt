@@ -1,0 +1,13 @@
+C:\Users\Dmitriy Makarov\source\repos\TestTriplet\TestTriplet\bin\Debug\netcoreapp3.1\TestTriplet.exe
+C:\Users\Dmitriy Makarov\source\repos\TestTriplet\TestTriplet\bin\Debug\netcoreapp3.1\TestTriplet.deps.json
+C:\Users\Dmitriy Makarov\source\repos\TestTriplet\TestTriplet\bin\Debug\netcoreapp3.1\TestTriplet.runtimeconfig.json
+C:\Users\Dmitriy Makarov\source\repos\TestTriplet\TestTriplet\bin\Debug\netcoreapp3.1\TestTriplet.runtimeconfig.dev.json
+C:\Users\Dmitriy Makarov\source\repos\TestTriplet\TestTriplet\bin\Debug\netcoreapp3.1\TestTriplet.dll
+C:\Users\Dmitriy Makarov\source\repos\TestTriplet\TestTriplet\bin\Debug\netcoreapp3.1\TestTriplet.pdb
+C:\Users\Dmitriy Makarov\source\repos\TestTriplet\TestTriplet\obj\Debug\netcoreapp3.1\TestTriplet.csprojAssemblyReference.cache
+C:\Users\Dmitriy Makarov\source\repos\TestTriplet\TestTriplet\obj\Debug\netcoreapp3.1\TestTriplet.AssemblyInfoInputs.cache
+C:\Users\Dmitriy Makarov\source\repos\TestTriplet\TestTriplet\obj\Debug\netcoreapp3.1\TestTriplet.AssemblyInfo.cs
+C:\Users\Dmitriy Makarov\source\repos\TestTriplet\TestTriplet\obj\Debug\netcoreapp3.1\TestTriplet.csproj.CoreCompileInputs.cache
+C:\Users\Dmitriy Makarov\source\repos\TestTriplet\TestTriplet\obj\Debug\netcoreapp3.1\TestTriplet.dll
+C:\Users\Dmitriy Makarov\source\repos\TestTriplet\TestTriplet\obj\Debug\netcoreapp3.1\TestTriplet.pdb
+C:\Users\Dmitriy Makarov\source\repos\TestTriplet\TestTriplet\obj\Debug\netcoreapp3.1\TestTriplet.genruntimeconfig.cache
