@@ -16,6 +16,7 @@ namespace TestTriplet
     // так как там более удобная и понятная загрузка текстовых файлов
     // Важно!!! Подсчёт времени ведётся именно для обработки текста,
     // так как возможны заминки во время написания пути к файлу
+    // Важно!!! В новой версии паралелится поиск триплетов именно в словах
     class MainProgram
     {
         // Путь до файла
@@ -121,8 +122,11 @@ namespace TestTriplet
             LoadTextFile();
 
             // Создание нового потока
-            Thread taskExecute = new Thread(FindTripletsExecute);
-            taskExecute.Start();
+            //Thread taskExecute = new Thread(FindTripletsExecute);
+            //taskExecute.Start();
+
+            // Просто запуск FindTripletsExecute
+            FindTripletsExecute();
         }
     }
 }

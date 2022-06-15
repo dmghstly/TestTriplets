@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace TestTriplet
 {
+
     // Данный класс обрабатывает текст для удобной работы с поиском триплетов
     // После ищет сами триплеты
     public class TextHandler
@@ -11,6 +14,10 @@ namespace TestTriplet
         private static char[] charsToSplit = { '!', '-', '\"', '\'', ':', ';', ',', '.', '?',
                                        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                                        ' ', '\t', '\n', '\r', '*'};
+        // Словарь триплетов
+        private static Dictionary<string, int> triplets;
+        // Локер для синхронизации потоков, она нужна, чтобы не было проблем с доступом к словарю
+        private static object locker = new object();
 
         // Данный метод преобразует текст, полученный из файла
         // В отдельный массив слов
@@ -22,28 +29,27 @@ namespace TestTriplet
             return list;
         }
 
-        // Поиск триплетов
-        // Поиск производится только среди слов от длины равной 3
-        // ToLower() необходим для того, чтобы буквы в заглавном виде 
-        // воспринимались также как и обычные
-        public static Dictionary<string, int> FindTriplets(string[] words)
+        // Отдельный поток для обработки слов
+        private static void TripletCount(string help)
         {
-            Dictionary<string, int> triplets = new Dictionary<string, int>();
-            foreach(string word in words)
+            help = help.ToLower();
+            if (help.Length == 3)
             {
-                string help = word.ToLower();
-                if (help.Length == 3)
+                lock (locker)
                 {
                     if (triplets.ContainsKey(help))
                         triplets[help] += 1;
                     else
                         triplets.Add(help, 1);
                 }
-                else if (help.Length > 3)
+            }
+            else if (help.Length > 3)
+            {
+                for (int i = 0; i < help.Length - 2; i++)
                 {
-                    for (int i = 0; i < help.Length - 2; i++)
+                    string curr = help.Substring(i, 3);
+                    lock (locker)
                     {
-                        string curr = help.Substring(i, 3);
                         if (triplets.ContainsKey(curr))
                             triplets[curr] += 1;
                         else
@@ -51,6 +57,24 @@ namespace TestTriplet
                     }
                 }
             }
+        }
+
+        // Поиск триплетов
+        // Поиск производится только среди слов от длины равной 3
+        // ToLower() необходим для того, чтобы буквы в заглавном виде 
+        // воспринимались также как и обычные
+        public static Dictionary<string, int> FindTriplets(string[] words)
+        {
+            triplets = new Dictionary<string, int>();
+
+            // Параллельный запуск
+            ParallelLoopResult result = Parallel.ForEach(words, TripletCount);
+
+            //foreach(string word in words)
+            //{
+            //    Thread thread = new Thread(TripletCount);
+            //    thread.Start(word);
+            //}
             return triplets;
         }
     }
