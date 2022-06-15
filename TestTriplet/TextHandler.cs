@@ -29,32 +29,32 @@ namespace TestTriplet
             return list;
         }
 
+        // Подсчёт
+        private static void TripletCount(string curr)
+        {
+            lock (locker)
+            {
+                if (triplets.ContainsKey(curr))
+                    triplets[curr] += 1;
+                else
+                    triplets.Add(curr, 1);
+            }
+        }
+
         // Отдельный поток для обработки слов
-        private static void TripletCount(string help)
+        private static void TripletFind(string help)
         {
             help = help.ToLower();
             if (help.Length == 3)
             {
-                lock (locker)
-                {
-                    if (triplets.ContainsKey(help))
-                        triplets[help] += 1;
-                    else
-                        triplets.Add(help, 1);
-                }
+                TripletCount(help);
             }
             else if (help.Length > 3)
             {
                 for (int i = 0; i < help.Length - 2; i++)
                 {
                     string curr = help.Substring(i, 3);
-                    lock (locker)
-                    {
-                        if (triplets.ContainsKey(curr))
-                            triplets[curr] += 1;
-                        else
-                            triplets.Add(curr, 1);
-                    }
+                    TripletCount(curr);
                 }
             }
         }
@@ -68,7 +68,7 @@ namespace TestTriplet
             triplets = new Dictionary<string, int>();
 
             // Параллельный запуск
-            ParallelLoopResult result = Parallel.ForEach(words, TripletCount);
+            ParallelLoopResult result = Parallel.ForEach(words, TripletFind);
 
             //foreach(string word in words)
             //{
